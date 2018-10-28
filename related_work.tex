@@ -1,0 +1,55 @@
+\section{Related Work} \label{related_work}
+
+In this section, we will give an overview on existing murder mystery video games and examine how they approach the various challenges of the genre, survey projects that have used procedural generation in the context of game narratives and present the rule-specification language Ceptre.
+
+\subsection{Murder Mystery Video Games}
+
+While prevalent in many genres, as seen in section \ref{introduction}, murder mysteries have only partly been explored in video games.
+
+Most murder mystery games rely on handwritten narratives, that are similar in plot to a novel or movie.
+The player has the opportunity to follow the detectives along the story and gather evidence, interview suspects and follow leads.
+In some cases they may also expose lies and find holes in the presented testimonies.
+However, most games lack the ability to make connections between the evidence and testimonies and come to their own conclusions. With most steps represented as multiple choice questions, the player just has to pick the correct choice or guess until they get it right \cite{brown_2017}. 
+
+This tactic is employed in games like LA Noire, where falsely accusing a suspect will make him offer less information to you, but will never have game-changing consequences.
+This ensures that the player will always be able to complete the game, they must always reach the next scripted story point in the branching or linear narrative.
+
+While this is a valid choice, it has been noted that the resulting game may be less compelling.
+When the answers are all given within the game, the player can not become fully immersed in playing the clever detective \cite{goldstein_2018}.
+
+However, when players are left on their own to collect all evidence, it can lead to games like Murder on the Mississippi, which quickly become insolvable if a player misses a piece of information early on in the game \cite{petit_2018}.
+
+To make sure no clues can be missed while still allowing for more interaction than simple multiple choice options, games often feature in game notebooks or a collection of relevant items and notes.
+For example in the game Discworld Noir or...
+These written down clues often spoil the puzzles they represent as they need to feature the important aspect of the clue in order to be useful at all.
+
+Some games have attempted to remove this step by letting players take their own notes and offering other option to receive more information, such as the in-game search engine in The Shivah or the telephone book in Sherlock Holmes: Consuting Detective, which when used correctly open up potential new options for interaction.
+\todo{Why is this not ideal?}
+The game Her Story is an example of a completely different way of approaching this problem.
+The murder mystery game does not involve any sort of confrontation of the suspects.
+In fact there is no in game way of determining if you have come to the right conclusion at all.
+The player can simply gather information by searching a police database until they are satisfied with their understanding of the events.
+
+Reaching the correct solutions in this manner tends to be more satisfying to the player, as it is more of a testament to their skills.
+
+Yet no matter to which of these categories a game belongs, it has a relatively low replay value, as once the murderer is known the main motivation for playing the game ceases to exist.
+
+ClueGen attempts to rectify this by using procedural generation to the plots of murder mysteries.
+A number of possible motives and histories are used to create a multitude of narratives.
+The addition of possible red herrings or lying non-player characters enhances the complexity even further.
+Even with a relatively small set of predefined options the resulting mysteries were sufficiently interesting to the players.
+The players recognized complex, underlying intentions and structures, even in cases where these were not intended by the procedural generation program \cite{AIIDE1614070}.
+
+\subsection{Procedural Narrative Generation}
+
+
+\subsection{Ceptre}
+
+Ceptre\footnote{https://github.com/chrisamaphone/interactive-lp} is a "rule specification language" for games \cite{martens_2015}.
+Its intention is to allow rapid prototyping by providing a language specific to this domain.
+It uses linear logic as the foundation for the interpretation, which will be explained in more detail in section \ref{linear_logic}.
+
+In Ceptre a "game" consists of terms, predicates and rules, as well as an initial configuration.
+
+The game designer may 
+

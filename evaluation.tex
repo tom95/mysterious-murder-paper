@@ -1,0 +1,26 @@
+\section{Evaluation} \label{evaulation}
+
+\subsection{Linear Logic}
+While linear logic is more suited to represent real-life situations than classical logic, it showed shortcomings when applied to our domain.
+In linear logic all rules are deterministic, meaning every rule has exactly one possible outcome.
+There is no possibility for chance.
+This forced us to have multiple rules to represent possible different resolutions to some rules.
+One example is the rule \lstinline{steal}, which allows an actor to attempt to steal money from another.
+There were two possibilities when using this rule: the actor could be successful at stealing or he or she could be caught.
+These possibilities should obviously have a different effect on the state of the simulation.
+This kind of non-determinism is not supported by linear logic.
+To combat this we introduced a random component into our linear logic implementation that could pick one of the outcomes based on a probability.\todo{adapt this or approach about non-determinism}
+
+
+Another drawback of linear logic was that it only knows the resources that exist in the current state.
+There is no possibility to test for the absence of a given resource.
+While this did not pose a significant problem, it made the setup a lot more complex, both in terms of authorship and in terms of computation.
+For many predicates we now had to introduce an opposite and manually ensure that the resources always appeared mutually exclusive.
+
+For example our system kept track of which characters in the game were related to each other via the predicate \lstinline{related Character Character'}.
+When we introduced a new rule \lstinline{get_married}, we wanted to check that the characters getting married were not related to each other.
+As linear logic does not allow this, we had to introduce a new predicate \lstinline{not_related} and make sure to assign exactly one of these two predicated during the generation of the initial state.
+
+These were two reasons why the rules tended to be long and complex.\todo{is this here to stay?}
+
+\todo{talk a bit about the degree of responsibility when defining the rules of society. maybe mention a balance between what a player can understand based on their own societal experience (which is a lot of what detective work is about after all, right?) and what the author thinks a society should act like}
