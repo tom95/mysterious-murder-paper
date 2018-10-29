@@ -54,11 +54,34 @@ With the MCTS agents, we hit significant performance problems as we now had to e
 
 On our way to the MCTS agents, we first built an agent system based on OpenAI's \emph{deepq} Q-learning algorithm \todo{ref}. We set up the state space to reflect all available actions flattened as a two-dimensional array of integers, where each row's first integer corresponds to the constant index of a rule and each column then corresponds to the constant index of a character. A zero in either meant that this rule was unset or this rule did not involve all three characters. The action space then provided the agent with a choice of any of these rules by picking its integer index in the state space array. The challenge that we encountered with this setup primarily comes from the high variability in quantity of the available rules. We put a high negative reward on picking an invalid choice, but, even with a high factor of exploration, only made the agent learn to favor picking the first couple of options that it learned were typically safe. In an attempt to improve this situation, we shuffled the array's rows, such that invalid rules could be found at any index. Here, training over more than three hours did not lead to the agent reliably picking valid rules, which led us to the assumption that the state space was too large to figure out on an automatic basis. More specifically, we offered the agent a state space of 20 rows, with 4 columns each to host the rule index and up to three involved actors. The actor index ranged from 0 to 4 to mark the invalid actor and the 4 valid actor indices and the range of the rule index depended on how many rules the author supplies to the system, which in our case was around 20.
 
+To mention one more attempt we explored, with the motivation of creating a semi-automatic authoring system for rules, we employed word2vec \todo{ref} as a form of completion dialog as found in modern integrated development environments.
+Indeed, when tasked with solving word vectors for \enquote{gun} minus \enquote{kill} plus \enquote{cook}, the word2vec system yielded words such as \enquote{wok} or \enquote{dishwasher}.
+We used the pre-trained \todo{dataset name here and who provides it from where}.
+In an attempt to have word pairs closer to our domain, we trained our own model with murder mystery stories in the public domain, in our case various Sherlock Holmes stories by \todo{author}.
+
 \subsection{User Interface} \label{user_interface}
 
 We used the Python library Kivy to develop our user interface (UI).
-This allowed us to interact directly with the Python objects that were created during the murder mystery generation.
-One important goal during the UI development was to have a very visual representation of the state, that would be easy to understand for our users.
-To achieve this we relied on images to display our characters, objects and rules.
+This allowed us to directly use the Python objects that were created during the murder mystery generation, without the need for serialization when crossing language boundaries.
+One important goal during the UI development was to have a very visual representation of the state that is easy to understand for players.
+To achieve this, we relied on images to display our characters, objects and rules.
 In the beginning we relied on a very small set of sample images for our actors, which quickly led to confusion as the same portrait was used for multiple characters.
-Instead we started using emojis as our portraits and other images,
+Instead we started using emojis as our portraits and other images.
+This allowed us to have a great range of portraits that represent different genders, skin colours, ages and occupations.
+When assigning the images to the characters, we still proceed mostly randomly, only differentiating between male and female characters.
+However, with about ... possible images to choose from it is very rare that two characters will look the same.
+
+Emojis also allowed us to have uniformity in our other symbols.
+Apart from the characters we also use the emojis to represent the emotions and state of relationship between characters.
+This has worked very well with using emojis, as they were created to convey these emotions and are well known by the majority of people.
+This also allows us to communicate the emotions directly without having to use a level of indirection in the form of text.
+Especially if a user plays the game repeatedly, it might quickly become boring if always the same text is being used to explain a specific emotion.
+Emojis let us avoid this problem, without having to put a lot of effort into writing multiple versions of one statement.
+They also help people to quickly recognize the actors in each action, even if they do not know the names.
+
+In addition emojis are used to represent the objects, and the rules which use them.
+
+The rules were harder to represent using emojis.
+Some were quite simple, for example murder which we represent simply using a weapon and the two characters involved in the murder.
+Others were a bit more complicated, such as the rule 'lie to A about B' which is displayed as the "secret" emoji.
+Unfortunately we were not able to find a recognizable emoji for all rules, for example paying a debt to someone or stealing from someone, which are both represented using different money symbols as they are no other, more obvious ones to choose from.
