@@ -2,7 +2,7 @@
 
 In this section, we will outline our approach to a linear logic evaluator, describe how we used to it to generate stories in the domain of murder mysteries, and finally describe the user interface we built to allow players to interact with the system.
 
-\subsection{Linear Logic Evaluator}
+\subsection{Linear Logic Evaluator}\label{own_linear_logic_evaluator}
 
 Our approach on story generation is based on the approach used by the Ceptre story generation engine.
 This engine comes with a linear logic evaluator that takes rules that describe the transformation of resources to model the development of a story.
@@ -72,7 +72,7 @@ Putting a focus on delaying the murder for multiple steps is thus important to l
 \subsection{Believable Agents}
 In the first iteration of the prototype, we used agents that took actions randomly. This resulted in stories that were varied, but were hard to follow, as no higher level intention of the agents became apparent in the story, only by chance.
 
-To improve the believability of the flow of actions, we added certain rewards to each action that an agent can take. Some actions may incur a penalty, like picking up a weapon which decreases the agent's sanity score, but ultimately may allow it to commit a murder for a reward in fulfilment, if the agent has a fitting motive. The agent's actions became a lot more coherent in this way, as they follow the directions as given by the authored reward structures. With an ability to plan ahead for multiple steps, different agents may try to anger characters about others or find different ways to fulfil the preconditions of the rules with the highest rewards. 
+To improve the believability of the flow of actions, we added certain rewards to each action that an agent can take. Some actions may incur a penalty, like picking up a weapon which decreases the agent's sanity score, but ultimately may allow it to commit a murder for a reward in fulfillment, if the agent has a fitting motive. The agent's actions became a lot more coherent in this way, as they follow the directions as given by the authored reward structures. With an ability to plan ahead for multiple steps, different agents may try to anger characters about others or find different ways to fulfill the preconditions of the rules with the highest rewards. 
 
 To enable this sort of planned behavior, we used Monte Carlo Tree Search (MCTS). We pass the simulation to a MCTS agent, which then expands child states via UCB1 \todo{ref and is it actually called that?}. Since the simulation has no clear terminal state, we let the simulation play out a fixed number of steps every time instead. Considering a murder a terminal would have been an option, but this might actually discourage murders from happening, as actors who do not commit a murder get to collect rewards from more steps during playout. An alternative to this model would have been to only determine win/lose per playout, ending a playout with \enquote{win} if the character commits a murder and \enquote{lose} if they fall victim to one. This, however, would discourage actors from considering all other options that would otherwise bring them smaller rewards.
 
