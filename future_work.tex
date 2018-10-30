@@ -24,12 +24,13 @@ To remedy this situation, we propose a gameplay mechanic, wherein local knowledg
 More specifically, any actor is allowed to omit information that they consider sensitive.
 Only the murderer is allowed to also falsify statements.
 For any rule that is taken, uninvolved actors have a chance to witness this action happening.
-The probability that this happens is authored per rule, to prevent sensitive information from being witnessed too frequently, such that more realistic testimonies come together.
-With these mechanics in place, the game's core objective for players will be to identify the one actor whose testimony contains actual false information, who will be the murderer.
+The probability that this happens is defined per rule, to prevent sensitive information from being witnessed too frequently, such that more realistic testimonies come together.
+With these mechanics in place, the game's core objective for players will be to identify the one actor whose testimony contains actual false statements, thereby revealing themselves as the murderer.
 This is challenged by the fact that actors the murderer interacted with may omit this interaction, or that the murderer primarily interacted with the victim and no other actors witnessed these interactions.
 
 In a further step, accomplices to the murderer may be defined based on relationships.
-The relationship to the murderer would then become a hidden piece of information and the accomplice would also get the option to falsify information in order to cover both of them.
+The relationship between the murderer and the accomplice may be hidden, the accomplice may be a secret lover for example, or open through family connections or the like.
+The accomplice would then also get the option to falsify information in order to cover both of them.
 In the hopes that there will be contradictions between the testimony of the murderer and their accomplice, the player would get an additional challenge to find all those involved.
 
 With this model, it is however, questionable if the player will always be able to solve the mystery.
@@ -37,4 +38,14 @@ It may very well happen that simply not enough information from uninvolved actor
 While this of course reflects real life murder mysteries well, it will not lead to satisfying gameplay.
 As such, it would be desirable to automatically detect how many statements contradict to filter out potentially unsolvable mysteries.
 
-\todo{more detail}
+The current investigation stage could be further improved by not making all actions stop immediately after the murder.
+This would make it possible for actors to rid themselves of the murder weapon or grieve for the victim.
+Ideally actors would be able to blame the murder on other characters to create scenarios that are more difficult to unravel.
+
+Once these points have been realized, rigorous playtesting would be the next step.
+In particular, the number of characters will provide an interesting point of balance.
+Having more characters increases the load of information for the player, but also provides them with more points of reference for figuring out contradictions in a testimony and potentially a richer story with more complex character relationships.
+Since the interactions between actors are the only way the player gets to know them, giving actors the option to interact more will lead to players identifying actors in richer ways, as already shown in ClueGen \todo{ref}.
+An actor may become a lover of particularly many other actors or a family feud may arise.
+
+It also stands to investigate if we can add a mechanic that would create red herrings, or if the procedural generation already lets the player find red herrings without requiring explicit authorship of such rules.

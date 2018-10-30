@@ -4,9 +4,22 @@ In this section, we will outline our approach to a linear logic evaluator, descr
 
 \subsection{Linear Logic Evaluator}
 
-Our approach on story generation is based on the approach used by the Ceptre story generation engine. This engine comes with a linear logic evaluator that takes rules that describe the transformation of resources to model the development of a story. The Ceptre engine is written in the Standard Meta Language. Early in the project, we had to realize that we were using too many constraints, modelled as resources, for Ceptre to handle. Execution speed would quickly deteriorate, especially as the simulation dragged on. As a consequence, we decided to implement a version of Ceptre, reduced to the aspects that we were making use of. This meant that we dropped features like Ceptre's stages and its advanced type system with support for inheritance. The type system, which allowed for elegant rules like \enquote{has Character gun} for the predicate \enquote{has character object} and the subtype \enquote{gun} of \enquote{object}, made the evaluation considerably more complex as each type instance would increase the possible permutations of each rule making use of it. For our simple use cases, we were able to avoid using types other than our actors by using rules of the form \enquote{has\_gun Character}.
+Our approach on story generation is based on the approach used by the Ceptre story generation engine.
+This engine comes with a linear logic evaluator that takes rules that describe the transformation of resources to model the development of a story.
+The Ceptre engine is written in the Standard Meta Language.
+Early in the project, we had to realize that we were using too many constraints, modeled as resources, for Ceptre to handle.
+Execution speed would quickly deteriorate, especially as the simulation dragged on.
+As a consequence, we decided to implement a version of Ceptre, reduced to the aspects that we were making use of.
+This meant that we dropped features like Ceptre's stages and its advanced type system with support for inheritance.
+The type system, which allowed for elegant rules like \enquote{has Character gun} for the predicate \enquote{has character object} and the subtype \enquote{gun} of \enquote{object}, made the evaluation considerably more complex as each type instance would increase the possible permutations of each rule making use of it.
+For our simple use cases, we were able to avoid using types other than our actors by using rules of the form \enquote{has\_gun Character}.
 
-Our linear logic evaluator takes a set of actors, a set of rules and a set of predicate instances that form the initial state of the simulation. Predicates have a name and an ordered list of placeholders that can be taken up by any actors. A predicate instance is a predicate of which all placeholders have been configured with concrete actors. Rules consist of a left-hand side and a right-hand side, both containing predicates. The predicate's placeholders are numbered consistently, so that advanced rules that refer to the same actors across the predicates of a rule are possible. To this extent, we form a strict subset of Ceptre's own evaluator. 
+Our linear logic evaluator takes a set of actors, a set of rules and a set of predicate instances that form the initial state of the simulation.
+Predicates have a name and an ordered list of placeholders that can be taken up by any actors.
+A predicate instance is a predicate of which all placeholders have been configured with concrete actors.
+Rules consist of a left-hand side and a right-hand side, both containing predicates.
+The predicate's placeholders are numbered consistently, so that advanced rules that refer to the same actors across the predicates of a rule are possible.
+To this extent, we form a strict subset of Ceptre's own evaluator. 
 
 We extended this system by introducing non-determinism. This means that the right-hand side may list multiple sets of predicates that are all possible outcomes of activating this rule, together with a probability of each outcome occurring. Prior to this, we would have two rules for each possible outcome, for example one for stealing from another actor successfully and another for being caught. This worked fine while randomly selecting rules, but as soon as we used more sophisticated artificial intelligence, the agents figured out that picking the rule where they get caught was not a good choice.
 
@@ -35,11 +48,26 @@ Most of the rules pose a dramatic conflict between characters that generate reso
 Typically, there is a countering rule that resolves some of this conflict by removing these resources again.
 The system is, however, biased towards escalating the conflict quickly, to ensure that stories do not get out of hand and become too complex to understand for a player. All rules require a motivation as the player would otherwise not have means to follow the flow of events. For example, fighting with another character requires the preexistence of \enquote{anger} between the two. Making up would require characters to have developed two \enquote{anger} between each other before, while there also exists a resource of \enquote{trust} between the two. All rules require certain preconditions, such as characters being alive or dead, or not currently being married when proposing to another character.
 
-In our current rule set, there are three different motives for murder. Characters that have many \enquote{anger} resources to another character may choose to murder them over that. Spouses of characters that are cheating may choose to murder their spouse's lover. Greedy characters may choose to murder a rich character to acquire their money. All of these rules require the actor to first acquire a weapon, which delays the inevitable at least for one turn, typically making reason and consequence less obvious in the narrative. Further, we added one rule where characters may be able to kill another character without being in possession of a weapon if they have particularly many \enquote{anger} resources to another character, to make the \enquote{has\_weapon} predicate slightly less of a definitive indicator of a murder.
+In our current rule set, there are three different motives for murder.
+Characters that have many \enquote{anger} resources to another character may choose to murder them over that.
+Spouses of characters that are cheating may choose to murder their spouse's lover.
+Greedy characters may choose to murder a rich character to acquire their money.
+All of these rules require the actor to first acquire a weapon, which delays the inevitable at least for one turn, typically making reason and consequence less obvious in the narrative.
+Further, we added one rule where characters may be able to kill another character without being in possession of a weapon if they have particularly many \enquote{anger} resources to another character, to make the \enquote{has\_weapon} predicate slightly less of a definitive indicator of a murder.
 
-Other rules to add substance to the narrative include characters attempting to gamble, which may yield debt that motivates them to acquire money. This can either be done by attempting to steal from other characters, or even by murdering them. Characters can seduce each other, become lovers or married, or get divorced. Further, to make the origin of \enquote{anger} resources that play a central role in the murder motives less obvious, we added the concept of spreading the abstract concept of a lie about another character. In this way, a character X that does not like another character Y can attempt to spread a lie about Y to a character Z. If the successful outcome is chosen, Z now also becomes angry at Y. A more sophisticated system may allow characters to construct specific lies, which would add another layer of interest to the game, as characters would then be able to formulate testimonies which they believe to be true based on information they received from another character, but which the player can then identify as lies.
+Other rules to add substance to the narrative include characters attempting to gamble, which may yield debt that motivates them to acquire money.
+This can either be done by attempting to steal from other characters, or even by murdering them.
+Characters can seduce each other, become lovers or married, or get divorced.
+Further, to make the origin of \enquote{anger} resources that play a central role in the murder motives less obvious, we added the concept of spreading the abstract concept of a lie about another character.
+In this way, a character X that does not like another character Y can attempt to spread a lie about Y to a character Z.
+If the successful outcome is chosen, Z now also becomes angry at Y.
+A more sophisticated system may allow characters to construct specific lies, which would add another layer of interest to the game, as characters would then be able to formulate testimonies which they believe to be true based on information they received from another character, but which the player can then identify as lies.
 
-We added non determinism wherever possible, and in particular to those rules with high rewards for a positive outcome, to ensure that he artificial intelligence will choose options that may have a high pay off for it, but may also result in dramatic tension, as for example, one character catches another in an a attempt to still from  them.
+We added non determinism wherever possible, and in particular to those rules with high rewards for a positive outcome, to ensure that he artificial intelligence will choose options that may have a high pay off for it, but may also result in dramatic tension, as for example, one character catches another in an attempt to steal from them.
+
+Having only few motives for murder does in fact align with the most common structure of Agatha Christie's novels, which we took as a major influence.
+Typically, the reason for murder is one of those we listed above, with the depth of the story coming from the elaborate reasoning and the relationships between the characters.
+Putting a focus on delaying the murder for multiple steps is thus important to let agents interact and provide variability to the otherwise few motives.
 
 \subsection{Believable Agents}
 In the first iteration of the prototype, we used agents that took actions randomly. This resulted in stories that were varied, but were hard to follow, as no higher level intention of the agents became apparent in the story, only by chance.
