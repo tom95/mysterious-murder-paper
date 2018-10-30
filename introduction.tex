@@ -1,7 +1,13 @@
 \section{Introduction} \label{introduction}
 
-In this paper we will discuss an approach to create murder mystery stories via procedural generation
-We will discuss several artificial intelligence (AI) approaches we employed.
+This paper will discuss an approach to create murder mystery stories via procedural generation.\todo{update this}
+
+In this section We will give an overview on the genre murder mysteries and our motivation for this project.
+Then we will introduce related work in the fields of murder mysteries in video games, procedural story generation and Ceptre in section \ref{related_work}.
+Furthermore, in section \ref{background} we will explain the concept of linear logic, which is used by Ceptre.
+Section \ref{approach} will explain our approaches to our own linear logic evaluator, our rule set, believable agents and the user interface.
+The section \ref{evaulation} discusses these approaches.
+Sections \ref{future_work} and \ref{conclusion} will talk about possible future work that might be done in this project, as well as give a summary of our findings. \todo{tom, update once written}
 
 \subsection{Murder Mysteries}
 
@@ -9,16 +15,16 @@ Murder mysteries as a genre first became popular in the 19th century as a litera
 They quickly grew in popularity.
 These detective stories reached their height of popularity in the 1920s and 30s, which has since been referred to as the Golden Age of Detective fiction.
 Many authors from that time are still prevalent in today's pop culture, as can be seen by for example the 2017 adaptation of Agatha Christie's novel Murder on the Orient Express.
-Novels from that era often followed very strict rules as defined by Knock's "Ten Commandments".\todo{ref}
+Novels from that era often followed very strict rules as defined by Van Dine's Twenty Rules for Writing Detective Stories \cite{van_dine_1928} or Knox' "Ten Commandments" \cite{knox_1929}.
 
 Today, murder mysteries have found their way into most genres.
 Television series and movies especially feature them in many different variations.
 \todo{today popular in movies television (45?) general public?, find stats}
 
-These crime shows come in a huge variation of sub-genres, be it the classical detective story or a more outlandish settings, such as ... \todo{mention stuff like izombie or lucifer}.
+These crime shows come in a huge variation of sub-genres, be it the classical detective story or a more outlandish settings, whether it is a Zombie helping to solve crime by eating the victims brains or the devil himself coming to earth to find who did it. \todo{ref}
 
 The board game Cluedo is another representation of this genre, letting the players compete on who can solve the murder of Dr. Black the fastest.
 
-\subsection{Procedural Story Generation}
+\subsection{Procedural Murder Mystery Generation} \todo{have motivation}
 Rather than replacing authors by generating stories automatically, this project aims to provide a tool for authors to craft rules that inform the mechanics of a world.
 These mechanics, combined with procedural generation, then yield 

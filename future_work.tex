@@ -1,20 +1,40 @@
 \section{Future Work} \label{future_work}
 
 While we made significant progress in this project the final outcome is far from being a finished or even playable game.
-In this section we will talk about the steps that are necessary before a version of this prototype can be tested by players, such as giving the NPCs the ability to lie and a concept of searching for additional evidence.\todo{was this a plan}
+In this section we will talk about the steps that are necessary before a version of this prototype can be tested by players, such as giving non-playable characters (NPCs) more distinct personalities and the ability to lie, as well as a concept of searching for additional evidence.
 
 \subsection{Enhancing Characters}
 
-The decision to use emojis \todo{check word emoji} to represent our characters has served us well.
+The decision to use emojis to represent our characters has served us well, making recognition quick and easy.
 The characters themselves are, however, still very rudimentary and lack personality.
 
-We would like to add more options to the characters themselves, such as age and occupation, as well as use the already defined traits during the investigation stage.
-Trusting characters could reveal information more easily, while others may try to keep secrets.
+We would like to add more options to the characters themselves, such as age and occupation, as well as use the already defined traits during the investigation stage. Trusting characters could reveal information more easily, while others may try to keep secrets.
 
-Using the emojis in a less random and more thought out way would allow us to make relationships between characters more clear.
-Characters of one family could, for example, have the same skin colour (in most cases).
+Using the emojis in a less random and more thought out way would allow us to make relationships between characters more clear. Characters of one family could, for example, have the same skin colour (in most cases).
 
 Currently we only generate whether two characters are related, we do not specify how.
-This might be an area where we could improve, which would allow us to introduce more complex rules and allow for more interesting stories, such as rivaling siblings.
+This might be an area where we could improve, which would allow us to introduce more complex rules and allow for more interesting stories, such as rivaling siblings. To make character relations more obvious, we would like to change their last names, so that families and married couples have the same name.
 
-To make character relations more obvious, we would like to change their last names, so that families and married couples have the same name.
+\subsection{Enhancing the Investigation Stage}
+To make the game satisfying to players, they should have the option to uncover hidden motives.
+Currently none of the actors will attempt to lie to the player, they will not even try to hide information.
+While not all actors possess knowledge of everything that has happened, it is only a matter of dedication for the player to question all actors before eventually finding the actor who admits to the murder.
+
+To remedy this situation, we propose a gameplay mechanic, wherein local knowledge exists and certain actors can lie.
+More specifically, any actor is allowed to omit information that they consider sensitive.
+Only the murderer is allowed to also falsify statements.
+For any rule that is taken, uninvolved actors have a chance to witness this action happening.
+The probability that this happens is authored per rule, to prevent sensitive information from being witnessed too frequently, such that more realistic testimonies come together.
+With these mechanics in place, the game's core objective for players will be to identify the one actor whose testimony contains actual false information, who will be the murderer.
+This is challenged by the fact that actors the murderer interacted with may omit this interaction, or that the murderer primarily interacted with the victim and no other actors witnessed these interactions.
+
+In a further step, accomplices to the murderer may be defined based on relationships.
+The relationship to the murderer would then become a hidden piece of information and the accomplice would also get the option to falsify information in order to cover both of them.
+In the hopes that there will be contradictions between the testimony of the murderer and their accomplice, the player would get an additional challenge to find all those involved.
+
+With this model, it is however, questionable if the player will always be able to solve the mystery.
+It may very well happen that simply not enough information from uninvolved actors is presented to find contradictions and identify the murderer.
+While this of course reflects real life murder mysteries well, it will not lead to satisfying gameplay.
+As such, it would be desirable to automatically detect how many statements contradict to filter out potentially unsolvable mysteries.
+
+\todo{more detail}

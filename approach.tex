@@ -1,4 +1,4 @@
-\section{Approach}
+\section{Approach} \label{approach}
 
 In this section, we will outline our approach to a linear logic evaluator, describe how we used to it to generate stories in the domain of murder mysteries, and finally describe the user interface we built to allow players to interact with the system.
 
@@ -25,7 +25,7 @@ where the each \lstinline|{i}| will be replaced with the name of the i-th actor 
 
 \subsection{A Murder Mystery Rule Set}
 
-As a basis for the rules, we chose to introduce resources that model the current relationships between characters and general tendencies in their character to act in certain ways. For these, we adapted the \emph{Big Five Personality Traits}, \todo{ref} giving each character a balance of three resources for each opposing pair of traits. For example, a character might receive two \emph{cautious} resources and one \emph{curious} resource, or three \emph{confident} resources and no \emph{insecure} resources. This allowed authoring rules that require a certain tendency towards one of the extremes of each trait pair. To model the relationships between characters, we used Plutchik's Wheel of Emotion. Again, we have opposing pairs that are however not necessarily exclusive in our system. Spending time with another actor may yield \emph{trusting} resources between the two, while fighting might yield \emph{anger} resources. A \emph{making up} rule would then allow removing \emph{anger} resources again. To model more extreme characters, we introduced a system similar to alignments as found in some role-playing games. Actors may either be good, neutral or, evil, which will enable them to pick certain options more easily than other characters.
+As a basis for the rules, we chose to introduce resources that model the current relationships between characters and general tendencies in their character to act in certain ways. For these, we adapted the \emph{Big Five Personality Traits} \cite{rothmann_coetzer_2003}, giving each character a balance of three resources for each opposing pair of traits. For example, a character might receive two \emph{cautious} resources and one \emph{curious} resource, or three \emph{confident} resources and no \emph{insecure} resources. This allowed authoring rules that require a certain tendency towards one of the extremes of each trait pair. To model the relationships between characters, we used Plutchik's Wheel of Emotion\todo{ref}. Again, we have opposing pairs that are however not necessarily exclusive in our system. Spending time with another actor may yield \emph{trusting} resources between the two, while fighting might yield \emph{anger} resources. A \emph{making up} rule would then allow removing \emph{anger} resources again. To model more extreme characters, we introduced a system similar to alignments as found in some role-playing games. Actors may either be good, neutral or, evil, which will enable them to pick certain options more easily than other characters.
 
 In the next step, we generate relationships and attributes relevant to our domain of classical murder mystery \todo{check term classical}. This includes whether a character is rich (\enquote{has\_money Character}), their current relationship to other characters using the wheel of emotion, or whether the characters are either related, or lovers or married.
 
@@ -57,7 +57,7 @@ On our way to the MCTS agents, we first built an agent system based on OpenAI's 
 To mention one more attempt we explored, with the motivation of creating a semi-automatic authoring system for rules, we employed word2vec \todo{ref} as a form of completion dialog as found in modern integrated development environments.
 Indeed, when tasked with solving word vectors for \enquote{gun} minus \enquote{kill} plus \enquote{cook}, the word2vec system yielded words such as \enquote{wok} or \enquote{dishwasher}.
 We used the pre-trained \todo{dataset name here and who provides it from where}.
-In an attempt to have word pairs closer to our domain, we trained our own model with murder mystery stories in the public domain, in our case various Sherlock Holmes stories by \todo{author}.
+In an attempt to have word pairs closer to our domain, we trained our own model with murder mystery stories in the public domain, in our case various Sherlock Holmes stories by Sir Arthur Conan Doyle, as well as early stories by Agatha Christie.
 
 \subsection{User Interface} \label{user_interface}
 
@@ -69,7 +69,7 @@ In the beginning we relied on a very small set of sample images for our actors, 
 Instead we started using emojis as our portraits and other images.
 This allowed us to have a great range of portraits that represent different genders, skin colours, ages and occupations.
 When assigning the images to the characters, we still proceed mostly randomly, only differentiating between male and female characters.
-However, with about ... possible images to choose from it is very rare that two characters will look the same.
+However, with more than 350 possible images to choose from it is very rare that two characters will look the same.
 
 Emojis also allowed us to have uniformity in our other symbols.
 Apart from the characters we also use the emojis to represent the emotions and state of relationship between characters.
