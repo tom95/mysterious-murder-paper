@@ -2,23 +2,28 @@
 
 \subsection{Linear Logic: Ceptre} \label{linear_logic}
 
-Ceptre is an implementation of a linear logic system (??) that uses resources.
+Ceptre is an implementation of a linear logic system, providing a rule specification language to allow authors the formalization of agent interactions and gameplay rules and their subsequent simulation.
+
+In Ceptre, a \enquote{game} consists of terms, predicates, rules, and an initial configuration.
+
+The game designer may \todo{essentially repeat abstract and focus on parts important to us}
 
 Linear logic is a formal logic that extends the classical logic used in mathematics.
-This classical logic concerns itself only with "stable truths".
+The classical logic concerns itself only with \enquote{stable truths}.
 These can, however, not always be applied directly to real-life situations, as they lack causality \cite{girard_1995}.
 While in classical logic truth all conditions stay the same after an evaluation, in reality the conditions may be modified.
-For example trading money for an object removes the possibility of spending this money again.
-Linear logic focuses on its formulas as resources, rather than "truth" \cite{sep-logic-linear}.
-These resources may be manipulated in the course of rule evaluations.
+For example, trading money for an object removes the possibility of spending this money again and changes the truths \enquote{I have money} to \enquote{I have this object}.
+Linear logic focuses on its formulas as resources, rather than truths \cite{sep-logic-linear}.
+New resources may be added to the simulation's state or removed in the course of rule evaluations.
 
-The application of linear logic has been studied in the context of games and programming languages, as well as quantum physics and linguistics \cite{sep-logic-linear}. \todo{(is this relevant? if so cite)}
+The application of linear logic has been studied in the context of games and programming languages, as well as in quantum physics and linguistics \cite{sep-logic-linear}. \todo{(is this relevant? if so cite)}
 
-Ceptre allows a game designer to specify terms, rules and predicates as well as an initial configuration.
-The initial configuration S consists of a set of predicates that represent the "truth" at this point.
-The execution of a Ceptre program consists of a series of repeated steps.
-During each of those repetitions, it must first be determined which rules can be applied in accord with the current state.
-This corresponds to the possible actions a character could take.
-A valid rule can now be chosen either by a player or randomly. 
-This rule will then by applied to the state, creating a new instance S'.
-This state S' may have additional predicates or may be missing predicates that became false after the application of the rule (as per the definition of linear logic).
+Ceptre allows a game designer to specify terms, rules and predicates as well as an initial configuration S.
+The initial configuration S consists of a set of predicates that represent the collection of truths at this point, such as \enquote{I have money}.
+The execution of a Ceptre simulation consists of a series of repeated steps.
+During each step, it will first be determined which rules can be applied in accord with the current state.
+A rule may have a set of preconditions, which is the resources that will be consumed from the state if that rule is applied, and a set of resulting resources.
+This corresponds to the possible actions an agent could take or in which a simulation may evolve.
+
+A valid rule can either be chosen interactively by a player, or randomly. 
+The chosen rule will then be applied to the state, creating a new instance of state S', on which the simulation step is then repeated until some terminal condition is reached, for example no more rules being available.

@@ -4,51 +4,48 @@ In this section, we will give an overview on existing murder mystery video games
 
 \subsection{Murder Mystery Video Games}
 
-While prevalent in many genres, as seen in section \ref{introduction}, murder mysteries have only partly been explored in video games.
+While prevalent in many genres, as seen in section \ref{introduction}, murder mysteries have only been explored in video games rarely, when compared to other genres.
+We put forward the claim that this is due to the complexity involved in detective work as portrayed by literature and film.
+Most murder mystery games rely on handwritten narratives that are similar in plot to a novel or movie.
+The player has the opportunity to follow the detectives along the story and gather evidence, interview suspects, or follow leads.
+In some cases they may also expose lies and find holes in presented testimonies.
+However, most games do not allow the players to make connections between the evidence and testimonies and let them come to their own conclusions. With most steps represented as multiple choice questions, the players just have to pick the correct choice or guess until they get it right \cite{brown_2017}. 
 
-Most murder mystery games rely on handwritten narratives, that are similar in plot to a novel or movie.
-The player has the opportunity to follow the detectives along the story and gather evidence, interview suspects and follow leads.
-In some cases they may also expose lies and find holes in the presented testimonies.
-However, most games lack the ability to make connections between the evidence and testimonies and come to their own conclusions. With most steps represented as multiple choice questions, the player just has to pick the correct choice or guess until they get it right \cite{brown_2017}. 
-
-This tactic is employed in games like LA Noire, where falsely accusing a suspect will make him offer less information to you, but will never have game-changing consequences.
-This ensures that the player will always be able to complete the game, they must always reach the next scripted story point in the branching or linear narrative.
+This method is employed in games like \emph{LA Noire}, where falsely accusing suspects will make them offer less information to the player, but will never have game-changing consequences.
+This ensures that players will always be able to complete the game; they will always be led to reach the next scripted story point in the branching or linear narrative, even if they took wrong decisions before.
 
 While this is a valid choice, it has been noted that the resulting game may be less compelling.
-When the answers are all given within the game, the player can not become fully immersed in playing the clever detective \cite{goldstein_2018}.
+When the answers are all given within the game, the player cannot become fully immersed in playing the clever detective \cite{goldstein_2018}.
 
-However, when players are left on their own to collect all evidence, it can lead to games like Murder on the Mississippi, which quickly become insolvable if a player misses a piece of information early on in the game \cite{petit_2018}.
+However, when players are left on their own to collect all evidence, it can lead to games like \emph{Murder on the Mississippi}, which becomes unsolvable if players miss a piece of information early on in the game \cite{petit_2018}.
 
-To make sure no clues can be missed while still allowing for more interaction than simple multiple choice options, games often feature in game notebooks or a collection of relevant items and notes.
-For example in the game Discworld Noir or...
+To make sure no clues can be missed while still allowing for more interaction than simple multiple choice options, games often feature in-game notebooks or a collection of relevant items and notes.
+For example in the game \emph{Discworld Noir} or... \todo{write on!}
 These written down clues often spoil the puzzles they represent as they need to feature the important aspect of the clue in order to be useful at all.
 
-Some games have attempted to remove this step by letting players take their own notes and offering other option to receive more information, such as the in-game search engine in The Shivah or the telephone book in Sherlock Holmes: Consuting Detective, which when used correctly open up potential new options for interaction.
+Some games have attempted to remove this step by letting players take their own notes and offering other option to receive more information, such as the in-game search engine in \emph{The Shivah} or the telephone book in \emph{Sherlock Holmes: Consulting Detective}, which only when used correctly open up potential new options for interaction.
 \todo{Why is this not ideal?}
-The game Her Story is an example of a completely different way of approaching this problem.
+The game \emph{Her Story} is an example of a completely different way of approaching this problem.
 The murder mystery game does not involve any sort of confrontation of the suspects.
-In fact there is no in game way of determining if you have come to the right conclusion at all.
-The player can simply gather information by searching a police database until they are satisfied with their understanding of the events.
+In fact, there is no in-game way of determining if you have come to the right conclusion at all.
+Players simply gather information by searching a police database until they are satisfied with their understanding of the events.
 
-Reaching the correct solutions in this manner tends to be more satisfying to the player, as it is more of a testament to their skills.
+We claim that reaching the correct solutions in this manner tends to be more satisfying to players, as it is a testament to their skills.
 
-Yet no matter to which of these categories a game belongs, it has a relatively low replay value, as once the murderer is known the main motivation for playing the game ceases to exist.
+Yet, no matter to which of these categories a game belongs, it has a relatively low replay value, as once the murderer is known, the main motivation for playing the game ceases to exist.
 
-ClueGen attempts to rectify this by using procedural generation to the plots of murder mysteries.
+\emph{ClueGen} attempts to rectify this by using procedural generation to the plots of murder mysteries.
 A number of possible motives and histories are used to create a multitude of narratives.
 The addition of possible red herrings or lying non-player characters enhances the complexity even further.
-Even with a relatively small set of predefined options the resulting mysteries were sufficiently interesting to the players.
-The players recognized complex, underlying intentions and structures, even in cases where these were not intended by the procedural generation program \cite{AIIDE1614070}.
+Even with a relatively small set of predefined options the resulting mysteries were sufficiently interesting to players.
+The players recognized complex, underlying intentions and structures, even in cases where these were not intended by the author of the rules informing the procedural generation program \cite{AIIDE1614070}.
 
 \subsection{Procedural Narrative Generation}
 
-In the GDC Talk \enquote{Best Practices for Procedural Narrative Generation} Rogelio Cardona-Rivera and Chris Martens outline different approaches to procedurally generate stories.
-They demonstrate examples of \emph{Ceptre}, a rule language using linear logic to formulate possible events, which we will describe in more detail below.\todo{ref}
-
 For the game PromWeek, McCoy et al created a \enquote{model for socially-oriented gameplay} named \emph{Comme il Faut}.
 The model draws from a corpus of social norms that inform the decisions of AI characters each turn of the game.
-It then generates little animations to visualize to the player how characters react to his or her actions.
-To reach this point, PromWeek required two years of manual authoring to embed social biases and convention in a formalized rule system. \todo{ref}
+It then generates animations to visualize to players how characters react to their decisions.
+To reach this point, PromWeek required two years of manual authoring to embed social biases and conventions in a formalized rule system. \todo{ref}
 
 A similar demonstration of an engaging, fully realized social game is Façade.
 Here, as well, it took the authors multiple years to create the necessary rules.
@@ -59,12 +56,6 @@ A narrative planning system was trained by having a large number of pupils play 
 Different branching story options were selected for different players.
 This allowed an automated analysis of the story variants that were particularly well received and had the highest impact on the education of the players.\todo{ref}
 
-\subsection{Ceptre} \todo{basically abstract of their paper}
-
-Ceptre\footnote{https://github.com/chrisamaphone/interactive-lp} is a "rule specification language" for games \cite{martens_2015}.
+\emph{Ceptre}\footnote{https://github.com/chrisamaphone/interactive-lp} is a \enquote{rule specification language} for interactive narratives or simulations \cite{martens_2015}.
 Its intention is to allow rapid prototyping by providing a language specific to this domain.
 It uses linear logic as the foundation for the interpretation, which will be explained in more detail in section \ref{linear_logic}.
-
-In Ceptre a "game" consists of terms, predicates and rules, as well as an initial configuration.
-
-The game designer may \todo{essentially repeat abstract and focus on parts important to us}
