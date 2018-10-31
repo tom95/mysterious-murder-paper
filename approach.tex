@@ -82,7 +82,13 @@ An alternative to this model would have been to only determine win/lose per play
 This, however, would discourage actors from considering other possibilities that would bring smaller rewards and always steer them towards murder directly.
 As such the murder mysteries would get a lot shorter and possibly less interesting if we were to use this strategy.
 
-From experimentation, good values for the maximum number of expanded states is around 100, while the number of playout steps if limited to 10. Most of the time, simulations will be shorter than 30 steps, making 10 a good balance between performance and allowing actors a good amount of foresight. The accuracy of the MCTS agents is diminished by the non deterministic choices. While expanding states, the actor will only get to know a single of those states and assume that this is the outcome. This results in sub optimal actors that sometimes act more pessimistic or optimistic when it comes to certain decisions, for example if they should propose to someone. As such, we found that not taking another step of optimization to enable the actors to explore all possible outcomes of actions they take, results in a more believable behavior.
+From experimentation, good values for the maximum number of expanded states is around 100, while the number of playout steps if limited to 10.
+Most of the time, simulations will be shorter than 30 steps, making 10 a good balance between performance and allowing actors a good amount of foresight.
+The accuracy of the MCTS agents is diminished by the non deterministic choices.
+While expanding states, the actor will only get to know a single of those states and assume that this is the outcome.
+This is because we store the entire state after each expansion, since the computation of valid moves is costly, so subsequent visits in selection of that node will not make a difference.
+In this way, agents will sometimes act more pessimistic or optimistic, based on their once observed outcome of a rule.
+As such, we found that not taking another step of optimization to enable the actors to explore all possible outcomes of actions they take, results in a more believable behavior.
 
 With the MCTS agents, we hit significant performance problems as we now had to evaluate valid actions at the current state 300 times more often, with 30 expansions and 10 playout steps. Using pre-calculated hashes for all lookups into the resource state allowed the simulation to progress reasonably fast, at about a pace that allowed a human to follow the event flow as decisions are made. Typically, evaluating MCTS actors is a very fast option \todo{tom: ref for where they say MCTS is fast}, but this is based on the assumption that calculating rewards is the expensive actions, while the random playout afterwards happens for free. For our simulation, however, each step of the simulation is
 
