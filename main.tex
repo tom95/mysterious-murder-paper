@@ -1,4 +1,4 @@
-\documentclass[sigchi, review]{acmart}
+\documentclass[sigchi,review]{acmart}
 
 \usepackage{booktabs} % For formal tables
 
@@ -22,36 +22,49 @@
 \usepackage{csquotes}
 \usepackage{listings}
 
+\def\UrlBreaks{\do\/\do-}
+
 \begin{document}
-\title{SIG Proceedings Paper in LaTeX Format} \todo{title}
+\title{Mysterious Murder -\\
+AI-driven Murder Mystery Generation}
 %\subtitle{Extended Abstract}
 
-\author{Tom Beckmann}
+\author{Dr. William Raffe}
 \affiliation{%
-  \institution{Institute for Clarity in Documentation}
+  \institution{University of Technology Sydney}
   \streetaddress{P.O. Box 1212}
   \city{Dublin}
   \state{Ohio}
   \postcode{43017-6221}
 }
-\email{tom.beckmann@student.hpi.de}
+\email{william.raffe@uts.edu.au}
 
 \author{Corinna Jaschek}
 \affiliation{%
-  \institution{Institute for Clarity in Documentation}
-  \streetaddress{P.O. Box 1212}
-  \city{Dublin}
-  \state{Ohio}
-  \postcode{43017-6221}
+  \institution{Hasso Plattner Institute}
+  \streetaddress{Prof.-Dr.-Helmert-Straße 2-3}
+  \city{Potsdam}
+  \state{Brandenburg}
+  \postcode{14482}
 }
 \email{corinna.jaschek@student.hpi.de}
 
+\author{Tom Beckmann}
+\affiliation{%
+  \institution{Hasso Plattner Institute}
+  \streetaddress{Prof.-Dr.-Helmert-Straße 2-3}
+  \city{Potsdam}
+  \state{Brandenburg}
+  \postcode{14482}
+}
+\email{tom.beckmann@student.hpi.de}
+
 % The default list of authors is too long for headers.
-\renewcommand{\shortauthors}{B. Trovato et al.}
+\renewcommand{\shortauthors}{W. Raffe, C. Jaschek, T. Beckmann}
 
 
 \begin{abstract}
-\todo{TODO}
+\todo{eiter: abstract}
 \end{abstract}
 
 %
@@ -102,9 +115,9 @@
 \input{future_work.tex}
 \input{conclusion.tex}
 
-\listoftodos[]
-
 \bibliographystyle{ACM-Reference-Format}
 \bibliography{bibliography}
+
+\listoftodos\relax
 
 \end{document}
