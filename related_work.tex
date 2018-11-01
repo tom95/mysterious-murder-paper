@@ -58,4 +58,22 @@ This allowed an automated analysis of the story variants that were particularly 
 
 \emph{Ceptre}\footnote{https://github.com/chrisamaphone/interactive-lp} is a \enquote{rule specification language} for interactive narratives or simulations \cite{martens_2015}.
 Its intention is to allow rapid prototyping by providing a language specific to this domain.
-It uses linear logic as the foundation for the interpretation, which will be explained in more detail in Section \ref{linear_logic}.
+It uses linear logic as the foundation for the interpretation.
+
+Linear logic is a formal logic that extends the classical logic used in mathematics.
+The classical logic concerns itself only with \enquote{stable truths}.
+These can, however, not always be applied directly to real-life situations, as they lack causality \cite{girard_1995}.
+While in classical logic truth all conditions stay the same after an evaluation, in reality the conditions may be modified.
+For example, trading money for an object removes the possibility of spending this money again and changes the truths \enquote{I have money} to \enquote{I have this object}.
+Linear logic focuses on its formulas as resources, rather than truths \cite{sep-logic-linear}.
+New resources may be added to the simulation's state or removed in the course of rule evaluations.
+
+Ceptre allows a game designer to specify terms, rules and predicates as well as an initial configuration $S$.
+The initial configuration $S$ consists of a set of predicates that represent the collection of truths at this point, such as \enquote{I have money}.
+The execution of a Ceptre simulation consists of a series of repeated steps.
+During each step, it will first be determined which rules can be applied in accord with the current state.
+A rule may have a set of preconditions, which is the resources that will be consumed from the state if that rule is applied, and a set of resulting resources.
+This corresponds to the possible actions an agent could take or in which a simulation may evolve.
+
+A valid rule can either be chosen interactively by a player, or randomly.
+The chosen rule will then be applied to the state, creating a new instance of state $S'$, on which the simulation step is then repeated until some terminal condition is reached, for example no more rules being available.

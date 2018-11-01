@@ -20,10 +20,14 @@ Rather than replacing authors by generating stories automatically, this project 
 These mechanics, combined with a procedural simulation, then yield a generated narrative whose quality will largely depend on the complexity of the pre-authored rules.
 Using this system instead of a branching narrative ensures a higher degree of variability and the possibility of emergent, perceived creativity in the stories on each play through, as the procedural generation system produces elements that the player believes to recognize.
 The stories generated in this way lend themselves better to be displayed in an amusing puzzle setting, rather than a highly dramatic story that is authored to provide the best pacing and suspense.
-\todo{mention that we build on ceptre so that it's clear when we give the overview}
+
+Our system uses Ceptre as a basis. Ceptre is a system to formulate and run interactive narratives or simulations \cite{martens_2015}.
+We extend Ceptre's core concept with non deterministic outcomes and a reward system for actions to drive artificial agents.
+Our simulation is neither driven by a human player or random choices, which are the two options Ceptre offers.
+Instead, we implement MCTS agents that drive the story by evaluating the possible options to maximize their reward.
+To make predicting the outcome of the simulation multiple steps ahead feasible in terms of performance, we re-implemented Ceptre's engine in Python.
 
 In Section \ref{related_work} we will introduce related work in the fields of murder mysteries in video games, procedural story generation and the story generation system \emph{Ceptre}.
-Next, in Section \ref{background} we will explain the concept of linear logic, which is used by Ceptre.
 Section \ref{approach} will explain our approach to our own linear logic evaluator, our rule set, believable agent system and the game's user interface.
 The Section \ref{evaulation} discusses in particular our opinion on linear logic in this system and the challenges coming with the authorship of the rules.
 Sections \ref{future_work} and \ref{conclusion} will talk about possible next steps that would drive this project further and provide a summary of our findings.
