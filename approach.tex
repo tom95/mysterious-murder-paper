@@ -24,7 +24,7 @@ The predicate's placeholders are numbered consistently, so that advanced rules t
 To this extent, our evaluator forms a strict subset of that of Ceptre. 
 \todo{more examples}
 
-We extended this system by introducing non-determinism. This means that the right-hand side may list multiple sets of predicates that are all possible outcomes of activating this rule, together with a probability of each outcome occurring. Prior to this, we had two rules for each possible outcome, for example one for stealing from another actor successfully and another for getting caught in the act. This worked fine while randomly selecting rules, but as soon as we started using artificial intelligence to select rules, the agents quickly learned that picking the rule where they get caught was not a good choice.
+We extended this system by introducing non-determinism. This means that the right-hand side may list multiple sets of predicates that are all possible outcomes of activating this rule, together with a probability of each outcome occurring. Prior to this, we had two rules for each possible outcome, for example one for stealing from another actor successfully and another for getting caught in the act. This worked fine while randomly selecting rules, but as soon as we started using intelligent agents to select rules, the agents quickly learned that picking the rule where they get caught was not a good choice.
 
 To further guide the learning intelligence in its decisions, we added a system of rewards to each rule. For each outcome of a rule, the agent could receive a reward or a penalty in different categories.
 As categories, we chose \emph{social}, \emph{sanity} and \emph{fulfillment}, loosely based on the top three layers of Maslow's hierarchy of needs \emph{belongingness and love}, \emph{self-esteem and respect} and \emph{self-actualization} \cite{maslow_1943}.
@@ -76,7 +76,7 @@ In this way, a character X that does not like another character Y can attempt to
 If the successful outcome is chosen, Z now also becomes angry at Y.
 A more sophisticated system may allow characters to construct specific lies, which would add another layer of interest to the game, as characters would then be able to formulate testimonies which they believe to be true based on information they received from another character, but which the player can then identify as lies.
 
-We added non determinism wherever possible, and in particular to those rules with high rewards for a positive outcome, to ensure that he artificial intelligence will choose options that may have a high pay off for it, but may also result in dramatic tension, as for example, one character catches another in an attempt to steal from them.
+We added non determinism wherever possible, and in particular to those rules with high rewards for a positive outcome, to ensure that he artificial agents will choose options that may have a high pay off for it, but may also result in dramatic tension, as for example, one character catches another in an attempt to steal from them.
 
 Having only few motives for murder does in fact align with the most common structure of Agatha Christie's novels, which we took as a major influence.
 Typically, the reason for murder is one of those we listed above, with the depth of the story coming from the elaborate reasoning and the relationships between the characters.\todo{corinna: ref murder reasons in christie novels?}
