@@ -1,6 +1,6 @@
 \section{Background} \label{background}
 
-\subsection{Linear Logic: Ceptre} \label{linear_logic}
+\subsection{Linear Logic in Ceptre} \label{linear_logic}
 
 Ceptre is an implementation of a linear logic system, providing a rule specification language to allow authors the formalization of agent interactions and gameplay rules and their subsequent simulation.
 
@@ -11,8 +11,6 @@ While in classical logic truth all conditions stay the same after an evaluation,
 For example, trading money for an object removes the possibility of spending this money again and changes the truths \enquote{I have money} to \enquote{I have this object}.
 Linear logic focuses on its formulas as resources, rather than truths \cite{sep-logic-linear}.
 New resources may be added to the simulation's state or removed in the course of rule evaluations.
-
-The application of linear logic has been studied in the context of games and programming languages, as well as in quantum physics and linguistics \cite{sep-logic-linear}. \todo{william: is this relevant? if so cite}
 
 Ceptre allows a game designer to specify terms, rules and predicates as well as an initial configuration S.
 The initial configuration S consists of a set of predicates that represent the collection of truths at this point, such as \enquote{I have money}.

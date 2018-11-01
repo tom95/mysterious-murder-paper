@@ -9,7 +9,7 @@ One example is the rule \lstinline{steal}, which allows an actor to attempt to s
 There were two possibilities when using this rule: the actor could be successful at stealing or he or she could be caught.
 These possibilities should obviously have a different effect on the state of the simulation.
 This kind of non-determinism is not supported by linear logic.
-To remedy this, we extended our implementation of a linear logic evaluator to support multiple outcomes with authored probability as described in section \ref{own_linear_logic_evaluator}.
+To remedy this, we extended our implementation of a linear logic evaluator to support multiple outcomes with authored probability as described in Section \ref{own_linear_logic_evaluator}.
 
 Another drawback of linear logic was that it only knows the resources that exist in the current state.
 There is no possibility to test for the absence of a given resource.
@@ -22,9 +22,12 @@ As linear logic does not allow this, we had to introduce a new predicate \lstinl
 
 \subsection{Authorship and Rule Set}
 The rules we used in our test runs generated interesting steps of events, but often lacked interest and the agents often fell back to following the same steps of actions to maximize their reward.
-We think that given more time, authors with more experience in story telling would be able to use this kind of system to create a rule set that produces more compelling and varied simulations.
-It may be necessary to add more convenience to the pure linear logic system to lower the barrier of entry and 
-Further, the resulting outcome may be put into a shape that appears more appealing to players by adding additional flavoring to each rule and dynamically adapting the rendition of sequences of events to the player, for example by making a more insecure character's testimony show this character trait in the way they present the testimony.
+We think that given more time, authors with more experience in storytelling would be able to use this kind of system to create a rule set that produces more compelling and varied simulations.
+It may be necessary to add more convenience to the pure linear logic system to lower the barrier of entry and allow keeping track of an increasingly complex system of rules.
+Further, the resulting outcome may be put into a shape that appears more appealing to players by adding additional flavoring to each rule and dynamically adapting the rendition of sequences of events to the actor, for example by making a more insecure actor's testimony show this character trait when they present the testimony.
 
-\todo{lack of time, not complex enough, not enough variability, sign that base system should be more flexible, authors not in IT may find linear logic confusing, missing unique, complex reasoning / story, flavouring}
-\todo{talk a bit about the degree of responsibility when defining the rules of society. maybe mention a balance between what a player can understand based on their own societal experience (which is a lot of what detective work is about after all, right?) and what the author thinks a society should act like}
+When authoring our own rules, we realized that we had the responsibility of balancing the nature of the rules and the resulting societal norms between what we may think an interesting society should be like and matching what may be the players' expectations, so that they can understand and follow the agent's reasoning.
+This includes aspects like the preconditions for marriage, what the consequences for stealing or lying should be like or the rules for when a murder may happen.
+This is further amplified by the requirement to attach rewards or penalties to each rules, such that the agents know which actions are desirable and which are better to avoid.
+
+\todo{evaluate interface, initial feedback}
