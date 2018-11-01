@@ -14,7 +14,7 @@ To remedy this, we extended our implementation of a linear logic evaluator to su
 Another drawback of linear logic was that it only knows the resources that exist in the current state.
 There is no possibility to test for the absence of a given resource.
 While this did not pose a significant problem, it made the rule's setup more complex, both in terms of authorship and in terms of computation.
-For many predicates we now had to introduce an opposite and manually ensure that the resources always appeared mutually exclusive in the resource state.
+For many predicates, we now had to introduce an opposite and manually ensure that the resources always appeared mutually exclusive in the resource state.
 
 For example, our system kept track of which characters in the game were related to each other via the predicate \lstinline{related Character Character'}.
 When we introduced a new rule \lstinline{get_married}, we wanted to check that the characters getting married were not related to each other.
@@ -28,6 +28,8 @@ Further, the resulting outcome may be put into a shape that appears more appeali
 
 When authoring our own rules, we became aware of a responsibility to balance the nature of the rules and the resulting societal norms between what we may think an interesting society should be like and matching what may be the players' expectations, so that they can understand and follow the agent's reasoning.
 This includes aspects like the preconditions for marriage, what the consequences for stealing or lying should be like or the rules for when a murder may happen.
-This is further amplified by the requirement to attach rewards or penalties to each rules, such that the agents know which actions are desirable and which are better to avoid.
+This is further amplified by the requirement to attach rewards or penalties to each rule, such that the agents know which actions are desirable and which are better to avoid.
 
 \todo{evaluate interface, initial feedback}
+During limited usability tests, players showed great excitement about the often surprising and funny rendition of certain actions by the emojis.
+At the same time, certain emotions, such as \enquote{relaxed} and \enquote{fear}, were too ambiguous so that additional explanations were required.

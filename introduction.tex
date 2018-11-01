@@ -7,27 +7,25 @@ Many authors from that time are still prevalent in today's pop culture, as can b
 Novels from that era often follow very strict rules as defined for example by Van Dine's \emph{Twenty Rules for Writing Detective Stories} \cite{van_dine_1928} or Knox' \emph{Ten Commandments} \cite{knox_1929}.
 
 Today, murder mysteries have found their way into most genres.
-Television series and movies especially feature them in many different variations.
-\todo{corinna: today popular in movies television (45?) general public?, find stats}
-
+Television series and movies feature them especially often.
 These crime shows come in a huge variation of sub-genres, be it the classical detective story or a more outlandish setting, whether it is a Zombie helping to solve crime by eating the victims brains\footnote{\url{https://www.imdb.com/title/tt3501584/?ref_=nv_sr_1}} or the devil himself coming to earth to find who did it\footnote{\url{https://www.imdb.com/title/tt4052886/?ref_=fn_al_tt_1}}.
 The board game Cluedo is another representation of this genre, letting the players compete on who can solve the murder of Dr. Black the fastest\footnote{\url{https://shop.hasbro.com/en-us/product/clue-game-2013-edition:9BCB9C5E-5056-9047-F505-6D1166C5961E}}.
 
 \subsection{Procedural Murder Mystery Generation}
-Murder mystery in video games often follow a linear, pre-written path that may include branching options.
-The extent to which games divert from this mode of story telling will be explored in Section \ref{related_work}.
+Murder mysteries in video games often follow a linear, pre-written path that may include branching options.
+The extent to which games divert from this mode of storytelling will be explored in Section \ref{related_work}.
 Rather than replacing authors by generating stories automatically, this project aims to provide a tool for authors to craft rules that inform the mechanics of a world.
 These mechanics, combined with a procedural simulation, then yield a generated narrative whose quality will largely depend on the complexity of the pre-authored rules.
-Using this system instead of a branching narrative ensures a higher degree of variability and the possibility of emergent, perceived creativity in the stories on each play through, as the procedural generation system produces elements that the player believes to recognize.
+Using this system instead of a branching narrative ensures a higher degree of variability and the possibility of emergent, perceived creativity in the stories on each playthrough, as the procedural generation system produces elements that the player believes to recognize.
 The stories generated in this way lend themselves better to be displayed in an amusing puzzle setting, rather than a highly dramatic story that is authored to provide the best pacing and suspense.
 
 Our system uses Ceptre as a basis. Ceptre is a system to formulate and run interactive narratives or simulations \cite{martens_2015}.
-We extend Ceptre's core concept with non deterministic outcomes and a reward system for actions to drive artificial agents.
+We extend Ceptre's core concept with non-deterministic outcomes and a reward system for actions to drive artificial agents.
 Our simulation is neither driven by a human player or random choices, which are the two options Ceptre offers.
 Instead, we implement MCTS agents that drive the story by evaluating the possible options to maximize their reward.
 To make predicting the outcome of the simulation multiple steps ahead feasible in terms of performance, we re-implemented Ceptre's engine in Python.
 
-In Section \ref{related_work} we will introduce related work in the fields of murder mysteries in video games, procedural story generation and the story generation system \emph{Ceptre}.
-Section \ref{approach} will explain our approach to our own linear logic evaluator, our rule set, believable agent system and the game's user interface.
-The Section \ref{evaulation} discusses in particular our opinion on linear logic in this system and the challenges coming with the authorship of the rules.
+In Section \ref{related_work} we will introduce related work in the fields of murder mysteries in video games, procedural story generation, and the story generation system \emph{Ceptre}.
+Section \ref{approach} will explain our approach to our own linear logic evaluator, our rule set, believable agent system, and the game's user interface.
+The Section \ref{evaulation} discusses, in particular, our opinion on linear logic in this system and the challenges coming with the authorship of the rules.
 Sections \ref{future_work} and \ref{conclusion} will talk about possible next steps that would drive this project further and provide a summary of our findings.

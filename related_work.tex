@@ -8,7 +8,7 @@ While prevalent in many genres, as seen in Section \ref{introduction}, murder my
 We put forward the claim that this is due to the complexity involved in detective work as portrayed by literature and film.
 Most murder mystery games rely on handwritten narratives that are similar in plot to a novel or movie.
 The player has the opportunity to follow the detectives along the story and gather evidence, interview suspects, or follow leads.
-In some cases they may also expose lies and find holes in presented testimonies.
+In some cases, they may also expose lies and find holes in presented testimonies.
 However, most games do not allow the players to make connections between the evidence and testimonies and let them come to their own conclusions. With most steps represented as multiple choice questions, the players just have to pick the correct choice or guess until they get it right \cite{brown_2017}. 
 
 This method is employed in games like \emph{LA Noire}, where falsely accusing suspects will make them offer less information to the player, but will never have game-changing consequences.
@@ -37,8 +37,8 @@ Yet, no matter to which of these categories a game belongs, it has a relatively 
 \emph{ClueGen} \cite{stockdale_2016} attempts to rectify this by using procedural generation to the plots of murder mysteries.
 A number of possible motives and histories are used to create a multitude of narratives.
 The addition of possible red herrings or lying non-player characters enhances the complexity even further.
-Even with a relatively small set of predefined options the resulting mysteries were sufficiently interesting to players.
-The players recognized complex, underlying intentions and structures, even in cases where these were not intended by the author of the rules informing the procedural generation program.
+Even with a relatively small set of predefined options, the resulting mysteries were sufficiently interesting to players.
+The players recognized complex, underlying intentions, and structures, even in cases where these were not intended by the author of the rules informing the procedural generation program.
 
 \subsection{Procedural Narrative Generation}
 
@@ -63,17 +63,17 @@ It uses linear logic as the foundation for the interpretation.
 Linear logic is a formal logic that extends the classical logic used in mathematics.
 The classical logic concerns itself only with \enquote{stable truths}.
 These can, however, not always be applied directly to real-life situations, as they lack causality \cite{girard_1995}.
-While in classical logic truth all conditions stay the same after an evaluation, in reality the conditions may be modified.
+While in classical logic truth all conditions stay the same after an evaluation, in reality, the conditions may be modified.
 For example, trading money for an object removes the possibility of spending this money again and changes the truths \enquote{I have money} to \enquote{I have this object}.
 Linear logic focuses on its formulas as resources, rather than truths \cite{sep-logic-linear}.
 New resources may be added to the simulation's state or removed in the course of rule evaluations.
 
-Ceptre allows a game designer to specify terms, rules and predicates as well as an initial configuration $S$.
+Ceptre allows a game designer to specify terms, rules, and predicates as well as an initial configuration $S$.
 The initial configuration $S$ consists of a set of predicates that represent the collection of truths at this point, such as \enquote{I have money}.
 The execution of a Ceptre simulation consists of a series of repeated steps.
 During each step, it will first be determined which rules can be applied in accord with the current state.
 A rule may have a set of preconditions, which is the resources that will be consumed from the state if that rule is applied, and a set of resulting resources.
 This corresponds to the possible actions an agent could take or in which a simulation may evolve.
 
-A valid rule can either be chosen interactively by a player, or randomly.
-The chosen rule will then be applied to the state, creating a new instance of state $S'$, on which the simulation step is then repeated until some terminal condition is reached, for example no more rules being available.
+A valid rule can either be chosen interactively by a player or randomly.
+The chosen rule will then be applied to the state, creating a new instance of state $S'$, on which the simulation step is then repeated until some terminal condition is reached, for example, no more rules being available.
