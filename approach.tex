@@ -1,6 +1,6 @@
 \section{Approach} \label{approach}
 
-In this section, we will describe the gameplay, outline our approach to a linear logic evaluator, then describe how we used to it to generate stories in the domain of murder mysteries, while making sure that actors made choices that appear coherent, and finally describe the user interface we built to allow players to interact with the system.
+In this section, we will describe the gameplay, outline our approach to a linear logic evaluator, then describe how we used it to generate stories in the domain of murder mysteries, while making sure that actors made choices that appear coherent, and finally describe the user interface we built to allow players to interact with the system.
 
 \begin{figure}
   \includegraphics[width=\columnwidth]{ui.png}
@@ -8,7 +8,7 @@ In this section, we will describe the gameplay, outline our approach to a linear
   \label{fig:ui}
 \end{figure}
 
-The game revolves around the generated murder mysteries that are generated in a simulation.
+The game revolves around murder mysteries that are generated in a simulation.
 In this simulation, multiple artificial actors get to take various actions, most of which involve an interaction with another actor.
 The actions are structured in a way that eventually a murder will happen, at which point the simulation stops.
 Players are then presented the involved actors and who the victim was.
@@ -21,10 +21,10 @@ This engine comes with a linear logic evaluator that takes rules that describe t
 The Ceptre engine is written in the Standard Meta Language and compiled via MLton\footnote{http://mlton.org/}.
 Early in the project, we used too many constraints, modeled as resources, for Ceptre to handle.
 Execution speed would quickly deteriorate, especially as the simulation dragged on.
-As a consequence, we decided to implement a version of Ceptre, reduced to the aspects that we were making use of.
+As a consequence, we implemented our own reduced version of Ceptre, containing only the aspects that we were making use of.
 This meant that we dropped features like Ceptre's stages and its advanced type system with support for inheritance.
-The type system, which allowed for elegant rules like \enquote{has Character gun} for the predicate \enquote{has character object} and the subtype \enquote{gun} of \enquote{object}, made the evaluation considerably more complex as each type instance would increase the possible permutations of each rulemaking use of it.
-For our simple use cases, we were able to avoid using types other than our actors by using rules of the form \enquote{has\_gun Character}.
+The type system, which allowed for elegant rules like \enquote{has Character gun} for the predicate \enquote{has character object} and the subtype \enquote{gun} of \enquote{object}, made the evaluation considerably more complex as each type instance would increase the possible permutations of each rule making use of it.
+For our simpler use case, we were able to avoid using types other than our actors by using rules of the form \enquote{has\_gun Character}.
 
 Our linear logic evaluator takes a set of actors, a set of rules and a set of predicate instances that form the initial state of the simulation.
 Predicates have a name and an ordered list of placeholders that can be taken up by any actors.
@@ -43,7 +43,7 @@ As categories, we chose \emph{social}, \emph{sanity} and \emph{fulfillment}, loo
 As an example, the rule \emph{steal\_debt}, in which one actor steals from another in order to pay off their debts, results in a positive reward of 120 in fulfillment, while also entailing a negative reward of -10 on their sanity.
 These categories of rewards proved to be general enough so that each rule we developed could have a value that felt intuitive associated with it.
 
-Lastly, we added a built-in templating system that used knowledge embedded in the system to formulate the rules as natural sentences.
+Lastly, to make the events more readable to players, we added a built-in templating system that used knowledge embedded in the system to formulate the rules as natural sentences.
 This allowed the formulation of templates like this:
 \begin{lstlisting}
 Shocked by the revelation that
@@ -55,7 +55,7 @@ where the each \lstinline|{i}| will be replaced with the name of the i-th actor 
 
 \subsection{A Murder Mystery Rule Set}
 
-As a basis for the rules, we chose to introduce resources that model the current relationships between characters and general tendencies in their character to act in certain ways. For these, we adapted the \emph{Big Five Personality Traits} \cite{rothmann_coetzer_2003}, giving each character a balance of three resources for each opposing pair of traits. For example, a character might receive two \emph{cautious} resources and one \emph{curious} resource, or three \emph{confident} resources and no \emph{insecure} resources. This allowed authoring rules that require a certain tendency towards one of the extremes of each trait pair. To model the relationships between characters, we used \emph{Plutchik's Wheel of Emotion} \cite{plutchik_2001}. Again, we have opposing pairs that are however not necessarily exclusive in our system. Spending time with another actor may yield \emph{trusting} resources between the two, while fighting might yield \emph{anger} resources. A \emph{making up} rule would then allow removing \emph{anger} resources again. To model more extreme characters, we introduced a system similar to alignments as found in some role-playing games. Actors may either be good, neutral or, evil, which will enable them to pick certain options more easily than other characters.
+As a basis for the rules, we chose to introduce resources that model the current relationships between characters and general tendencies in their character to act in certain ways. We adapted the \emph{Big Five Personality Traits} \cite{rothmann_coetzer_2003}, giving each character a balance of three resources for each opposing pair of traits. For example, a character might receive two \emph{cautious} resources and one \emph{curious} resource, or three \emph{confident} resources and no \emph{insecure} resources. This allowed authoring rules that require a certain tendency towards one of the extremes of each trait pair. To model the relationships between characters, we used \emph{Plutchik's Wheel of Emotion} \cite{plutchik_2001}. Again, we have opposing pairs that are however not necessarily exclusive in our system. Spending time with another actor may yield \emph{trusting} resources between the two, while fighting might yield \emph{anger} resources. A \emph{making up} rule would then allow removing \emph{anger} resources again. To model more extreme characters, we introduced a system similar to alignments as found in some role-playing games. We were inspired by the simple separation into \emph{Good}, \emph{Neutral} and \emph{Evil} as found in \emph{Dungeons and Dragons}\footnote{http://dnd.wizards.com/articles/features/systems-reference-document-srd}. Actors may follow one alignment which will enable them to pick certain options more easily than other characters.
 
 In the next step, we generate relationships and attributes relevant to our domain of murder mystery. This includes whether a character is rich (\enquote{has\_money Character}), their current relationship to other characters using the wheel of emotion, or whether the characters are either related or lovers or married.
 
@@ -64,7 +64,7 @@ In the next step, we generate relationships and attributes relevant to our domai
   \caption{An excerpt from a generated causality graph. The small nodes reflect resources that were generated or existed in the initial state. The larger boxes reflect the actions that agents chose to take. Marked in red is the rule that ended the simulation, the murder.}
 \end{figure*}
 
-Our rule authoring system is conceptually identical to that used in Ceptre. We, however, directly compose Python objects, which has the disadvantage of having to adhere to Python's syntax rather than being able to define a domain specific language, but the advantage that we can define functions that group often used sets of predicates, enable domain-specific consistency checks or toggle groups of rules with \enquote{if}-conditions. All of this would have of course also been able to in Ceptre, but would have required introducing new syntactical elements in the Ceptre language, while we effectively work on a meta-language level at all times.
+Our rule authoring system is conceptually identical to that used in Ceptre. We, however, directly compose Python objects, which has the disadvantage of having to adhere to Python's syntax rather than being able to define a domain specific language, but the advantage that we can define functions that group often used sets of predicates, enable domain-specific consistency checks or toggle groups of rules with \enquote{if}-conditions. All of this would, of course, also have been possible in Ceptre, but would have required introducing new syntactical elements in the Ceptre language, while we effectively work on a meta-language level at all times.
 
 Most of the rules pose a dramatic conflict between characters that generate resources like anger or suspicion.
 Typically, there is a countering rule that resolves some of this conflict by removing these resources again.
@@ -73,7 +73,8 @@ All rules require a motivation as the player would otherwise not have means to f
 For example, fighting with another character requires the preexistence of \enquote{anger} between the two.
 Making up would require characters to have developed two \enquote{anger} between each other beforehand, while there also exists a resource of \enquote{trust} between the two.
 Further, almost all rules have global preconditions, such as characters being alive or dead or not currently being married when proposing to another character.
-These preconditions are modeled in the same way that any other resources are, we did, however, observe that we started thinking about these conditions differently and created macros to help us keep track of this kind of state.
+These preconditions are modeled in the same way that any other resources are.
+We did, however, observe that we started thinking about these conditions differently and created macros to help us keep track of this kind of state.
 
 In our current rule set, there are three different motives for murder.
 Characters that have many \enquote{anger} resources to another character may choose to murder them over that.
@@ -108,13 +109,13 @@ An alternative to this model would have been to only determine win/lose per play
 This, however, would discourage actors from considering other possibilities that would bring smaller rewards and always steer them towards murder directly.
 As such the murder mysteries would get a lot shorter and possibly less interesting if we were to use this strategy.
 
-From experimentation, good values for the maximum number of expanded states is around 100, while the number of playout steps if limited to 10.
+From experimentation, good values for the maximum number of expanded states is around 100, while the number of playout steps is limited to 10.
 Most of the time, simulations will be shorter than 30 steps, making 10 a good balance between performance and allowing actors a good amount of foresight.
 The accuracy of the MCTS agents is diminished by the non-deterministic choices.
 While expanding states, the actor will only get to know a single of those states and assume that this is the outcome.
 This is because we store the entire state after each expansion, since the computation of valid moves is costly, so subsequent visits in the selection of that node will not make a difference.
 In this way, agents will sometimes act more pessimistic or optimistic, based on their once observed outcome of a rule.
-As such, we found that not taking another step of optimization to enable the actors to explore all possible outcomes of actions they take, results in a more believable behavior.
+As such, we found that not taking another step of optimization to enable the actors to explore all possible outcomes of actions results in a more believable behavior.
 
 With the MCTS agents, we hit significant performance problems as we now had to evaluate valid actions at the current state 300 times more often, with 30 expansions and 10 playout steps. Using pre-calculated hashes for all lookups into the resource state allowed the simulation to progress reasonably fast, at about a pace that allowed a human to follow the event flow as decisions are made. Evaluating decisions via MCTS is typically a fast option \cite{mcts_survey}. This is, however, based on the assumption that calculating rewards is the expensive action, while the random playout is negligible in terms of performance. For our simulation, however, each step of the simulation is costly, as the most expensive action is to find all valid rules, which has to happen on every step of the playout.
 

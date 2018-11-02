@@ -1,6 +1,6 @@
 \section{Related Work} \label{related_work}
 
-In this section, we will give an overview on existing murder mystery video games and examine how they approach the various challenges of the genre, survey projects that have used procedural generation in the context of game narratives and present the rule-specification language Ceptre created by Martens, which our own system is based on.
+In this section, we will give an overview on existing murder mystery video games and examine how they approach the various challenges of the genre, survey projects that have used procedural generation in the context of game narratives and present the rule-specification language Ceptre created by Martens \cite{martens_2015}, which our own system is based on.
 
 \subsection{Murder Mystery Video Games}
 
@@ -9,7 +9,7 @@ We put forward the claim that this is due to the complexity involved in detectiv
 Most murder mystery games rely on handwritten narratives that are similar in plot to a novel or movie.
 The player has the opportunity to follow the detectives along the story and gather evidence, interview suspects, or follow leads.
 In some cases, they may also expose lies and find holes in presented testimonies.
-However, most games do not allow the players to make connections between the evidence and testimonies and let them come to their own conclusions. With most steps represented as multiple choice questions, the players just have to pick the correct choice or guess until they get it right \cite{brown_2017}. 
+However, most games do not allow the players to make connections between the evidence and testimonies and let them come to their own conclusions. With most steps represented as multiple choice questions, the players just have to pick the correct choice or guess until they get it right \cite{brown_2017}.
 
 This method is employed in games like \emph{LA Noire}, where falsely accusing suspects will make them offer less information to the player, but will never have game-changing consequences.
 This ensures that players will always be able to complete the game; they will always be led to reach the next scripted story point in the branching or linear narrative, even if they took wrong decisions before.
@@ -63,7 +63,7 @@ It uses linear logic as the foundation for the interpretation.
 Linear logic is a formal logic that extends the classical logic used in mathematics.
 The classical logic concerns itself only with \enquote{stable truths}.
 These can, however, not always be applied directly to real-life situations, as they lack causality \cite{girard_1995}.
-While in classical logic truth all conditions stay the same after an evaluation, in reality, the conditions may be modified.
+While in classical logic all conditions stay the same after an evaluation, in reality, the conditions may be modified.
 For example, trading money for an object removes the possibility of spending this money again and changes the truths \enquote{I have money} to \enquote{I have this object}.
 Linear logic focuses on its formulas as resources, rather than truths \cite{sep-logic-linear}.
 New resources may be added to the simulation's state or removed in the course of rule evaluations.
