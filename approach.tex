@@ -64,7 +64,10 @@ In the next step, we generate relationships and attributes relevant to our domai
   \caption{An excerpt from a generated causality graph. The small nodes reflect resources that were generated or existed in the initial state. The larger boxes reflect the actions that agents chose to take. Marked in red is the rule that ended the simulation, the murder.}
 \end{figure*}
 
-Our rule authoring system is conceptually identical to that used in Ceptre. We, however, directly compose Python objects, which has the disadvantage of having to adhere to Python's syntax rather than being able to define a domain specific language, but the advantage that we can define functions that group often used sets of predicates, enable domain-specific consistency checks or toggle groups of rules with \enquote{if}-conditions. All of this would, of course, also have been possible in Ceptre, but would have required introducing new syntactical elements in the Ceptre language, while we effectively work on a meta-language level at all times.
+Our rule authoring system is conceptually identical to that used in Ceptre.
+We, however, directly compose Python objects.
+This has the disadvantage of having to adhere to Python's syntax rather than being able to define a domain specific language, but the advantage that we can define functions that group often used sets of predicates, enable domain-specific consistency checks or toggle groups of rules with \enquote{if}-conditions.
+All of this would have also been possible in Ceptre, but would have required introducing new syntactical elements in the Ceptre language, while we effectively work on a meta-language level at all times.
 
 Most of the rules pose a dramatic conflict between characters that generate resources like anger or suspicion.
 Typically, there is a countering rule that resolves some of this conflict by removing these resources again.
@@ -94,7 +97,8 @@ A more sophisticated system may allow characters to construct specific lies, whi
 We added non determinism wherever possible, and in particular to those rules with high rewards for a positive outcome, to ensure that the artificial agents will choose options that may have a high pay off for it, but may also result in dramatic tension, as for example, one character catches another in an attempt to steal from them.
 
 Having only a few motives for murder does, in fact, align with the most common structure of Agatha Christie's novels, which we took as a major influence.
-Typically, the reason for murder is one of those we listed above, with the depth of the story coming from the elaborate reasoning and the relationships between the characters.\todo{corinna: ref murder reasons in christie novels?}
+Typically, the reason for murder is one of those we listed above, with the depth of the story coming from the elaborate reasoning and the relationships between the characters \cite{verbogen_2008}.
+As such, while the stories appear very varied in their turn of events, most of the time the final step that motivated the murder can be put into few categories.
 Putting a focus on delaying the murder for multiple steps is thus important to let agents interact and provide variability to the otherwise few motives.
 
 \subsection{Believable Agents}
