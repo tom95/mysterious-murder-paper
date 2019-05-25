@@ -13,7 +13,12 @@ The board game \emph{Cluedo} is another representation of this genre, letting th
 
 \subsection{Procedural Murder Mystery Generation}
 
-\includegraphics{mcts-flow.pdf}
+\begin{figure}
+  \includegraphics{mcts-flow.pdf}
+  \caption{The communication between the three core elements of our system. When tasked with deciding on an character's next move, the MCTS component continuously creates copies of the simulation state to explore which sequence of actions provides the given character with the highest reward, until a maximum number of steps has been taken.}
+  \label{fig:mcts-components}
+\end{figure}
+
 
 Murder mysteries in video games often follow a linear, pre-written path that may include branching options.
 The extent to which games divert from this mode of storytelling will be explored in Section \ref{related_work}.
@@ -27,9 +32,10 @@ Our system uses Ceptre \cite{martens_2015} as a basis. Ceptre is a system to for
 We extend Ceptre's core concept with non-deterministic outcomes and a reward system for actions to drive artificial agents.
 Our simulation is neither driven by a human player or random choices, which are the two options Ceptre offers.
 Instead, we implement MCTS agents that drive the story by evaluating the possible options to maximize their reward.
+An illustration of the communication between Ceptre, the MCTS system, and the agents can be found in figure \ref{fig:mcts-components}.
 To make predicting the outcome of the simulation multiple steps ahead feasible in terms of performance, we re-implemented Ceptre's engine in Python.
 
 In Section \ref{related_work} we will introduce related work in the fields of murder mysteries in video games, procedural story generation, and the story generation system Ceptre.
 Section \ref{approach} will explain our approach to our own linear logic evaluator, our rule set, believable agent system, and the game's user interface.
-The Section \ref{evaulation} discusses, in particular, our opinion on linear logic in this system and the challenges coming with the authorship of the rules.
+The Section \ref{evaluation} discusses, in particular, our opinion on linear logic in this system and the challenges coming with the authorship of the rules.
 Sections \ref{future_work} and \ref{conclusion} will talk about possible next steps that would drive this project further and provide a summary of our findings.
